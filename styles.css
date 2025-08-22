@@ -60,18 +60,16 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: none; /* Remove text shadow for gradient text */
 }
 
 .section-subtitle {
     font-size: 1.125rem;
-    color: var(--text-primary); /* Darker color for better visibility */
+    color: var(--text-secondary);
     text-align: center;
     margin-bottom: 3rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    font-weight: 500; /* Increased font weight for better readability */
 }
 
 /* Buttons */
@@ -264,17 +262,18 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: block;
+    text-shadow: none;
 }
 
 .hero-subtitle {
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-size: 2.5rem;
     font-weight: 700;
 }
 
 .hero-description {
     font-size: 1.125rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     margin-bottom: 2rem;
     line-height: 1.7;
 }
@@ -384,7 +383,7 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
-    align-items: start; /* Ensure cards align to top */
+    align-items: start;
 }
 
 .service-card {
@@ -395,7 +394,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.3s ease;
     position: relative;
     border: 1px solid var(--border-color);
-    height: fit-content; /* Allow cards to size naturally */
+    height: fit-content;
     display: flex;
     flex-direction: column;
 }
@@ -407,8 +406,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .service-card.featured {
     border: 2px solid var(--primary-color);
-    transform: scale(1.02); /* Reduced scale to prevent overlap */
-    z-index: 2; /* Ensure featured card appears above others */
+    transform: scale(1.02);
+    z-index: 2;
 }
 
 .featured-badge {
@@ -422,7 +421,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 2rem;
     font-size: 0.875rem;
     font-weight: 600;
-    z-index: 3; /* Ensure badge appears above card */
+    z-index: 3;
 }
 
 .service-header {
@@ -434,7 +433,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
-    font-weight: 700; /* Increased font weight for better visibility */
+    font-weight: 700;
 }
 
 .service-price {
@@ -446,7 +445,7 @@ h1, h2, h3, h4, h5, h6 {
 .service-features {
     list-style: none;
     margin-bottom: 2rem;
-    flex: 1; /* Allow features to expand */
+    flex: 1;
 }
 
 .service-features li {
@@ -454,19 +453,19 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 1rem;
-    color: var(--text-primary); /* Darker color for better visibility */
-    font-weight: 500; /* Increased font weight for better readability */
+    color: var(--text-secondary);
+    font-weight: 500;
 }
 
 .service-features i {
     color: var(--primary-color);
     font-size: 0.875rem;
-    flex-shrink: 0; /* Prevent icon from shrinking */
+    flex-shrink: 0;
 }
 
 .service-card .btn {
-    margin-top: auto; /* Push button to bottom of card */
-    align-self: center; /* Center the button */
+    margin-top: auto;
+    align-self: center;
 }
 
 .special-service {
@@ -475,7 +474,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 3rem;
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-color);
-    margin-top: 2rem; /* Add space above special service */
+    margin-top: 2rem;
 }
 
 .special-service-content {
@@ -1164,6 +1163,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-xl);
     position: relative;
     animation: pulse 2s ease-in-out infinite;
+    border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .chatbot-icon i {
@@ -1181,6 +1181,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50%;
     border: 3px solid white;
     animation: bounce 2s ease-in-out infinite;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
 }
 
 .chatbot-tooltip {
@@ -1377,65 +1378,64 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .hero {
-        padding-top: 100px; /* Increased top padding for better mobile positioning */
-        min-height: 90vh; /* Slightly reduced height for mobile */
+        padding-top: 120px; /* Move title lower for better mobile visibility */
+        min-height: 90vh;
     }
     
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 3rem; /* Increased gap for better spacing */
+        gap: 3rem;
         padding: 0 1rem;
-        align-items: flex-start; /* Align to top for better mobile layout */
-        padding-top: 2rem; /* Add top padding to move content down */
+        align-items: flex-start;
+        padding-top: 2rem;
     }
     
     .hero-title {
         font-size: 2.5rem;
         line-height: 1.2;
-        margin-bottom: 2rem; /* Increased margin for better spacing */
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better visibility */
+        margin-bottom: 2rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .hero-subtitle {
         font-size: 2rem;
-        margin-bottom: 1.5rem; /* Added margin for better spacing */
-        color: var(--text-primary); /* Darker color for better visibility */
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+        margin-bottom: 1.5rem;
+        color: var(--text-primary);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
     
     .hero-description {
         font-size: 1rem;
         line-height: 1.6;
-        margin-bottom: 2.5rem; /* Increased margin for better spacing */
-        color: var(--text-primary); /* Darker color for better visibility */
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Add subtle shadow */
+        margin-bottom: 2.5rem;
+        color: var(--text-primary);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     }
     
     .hero-buttons {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
-        margin-bottom: 2rem; /* Added margin for better spacing */
+        margin-bottom: 2rem;
     }
     
     .btn {
         width: 100%;
         max-width: 300px;
         justify-content: center;
-        padding: 1rem 1.5rem; /* Increased padding for better touch targets */
-        font-size: 1.1rem; /* Slightly larger font for mobile */
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
     }
     
     .hero-visual {
-        height: 300px; /* Reduced height for mobile */
-        order: -1; /* Move visual above text on mobile */
+        height: 300px;
+        order: -1;
     }
     
     .floating-card {
         padding: 1rem;
         font-size: 0.875rem;
-        /* Adjust floating card positions for mobile */
     }
     
     .floating-card:nth-child(1) {
@@ -1457,22 +1457,22 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 0 1rem;
-        margin-bottom: 3rem; /* Reduced margin for mobile */
+        margin-bottom: 3rem;
     }
     
     .service-card {
-        margin: 0; /* Remove margins that could cause overlap */
-        padding: 1.5rem; /* Reduced padding for mobile */
-        max-width: 100%; /* Ensure cards don't exceed container width */
+        margin: 0;
+        padding: 1.5rem;
+        max-width: 100%;
     }
     
     .service-card.featured {
-        transform: none; /* Remove scale transform on mobile to prevent overlap */
-        margin-bottom: 1rem; /* Add space below featured card */
+        transform: none;
+        margin-bottom: 1rem;
     }
     
     .special-service {
-        margin: 1rem; /* Reduced margin for mobile */
+        margin: 1rem;
         padding: 2rem 1.5rem;
     }
     
@@ -1551,18 +1551,18 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .chatbot-icon {
-        width: 65px; /* Increased size for better visibility */
+        width: 65px;
         height: 65px;
-        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4); /* Enhanced shadow for visibility */
-        border: 3px solid rgba(255, 255, 255, 0.2); /* Added border for visibility */
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        border: 3px solid rgba(255, 255, 255, 0.2);
     }
     
     .chatbot-icon i {
-        font-size: 1.75rem; /* Larger icon for better visibility */
+        font-size: 1.75rem;
     }
     
     .notification-dot {
-        width: 22px; /* Larger notification dot */
+        width: 22px;
         height: 22px;
         border: 4px solid white;
     }
@@ -1597,7 +1597,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 480px) {
     .hero {
-        padding-top: 120px; /* Even more top padding for very small screens */
+        padding-top: 120px;
     }
     
     .hero-container {
@@ -1608,19 +1608,19 @@ h1, h2, h3, h4, h5, h6 {
     .hero-title {
         font-size: 2rem;
         margin-bottom: 1.5rem;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); /* Enhanced shadow for small screens */
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     }
     
     .hero-subtitle {
         font-size: 1.5rem;
         margin-bottom: 1rem;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); /* Enhanced shadow for small screens */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     }
     
     .hero-description {
         font-size: 0.95rem;
         margin-bottom: 2rem;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Enhanced shadow for small screens */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
     
     .floating-card {
@@ -1638,7 +1638,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .special-service {
-        margin: 0 0.5rem;
+        margin: 0.5rem;
         padding: 1.5rem 1rem;
     }
     
@@ -1672,8 +1672,8 @@ h1, h2, h3, h4, h5, h6 {
     .chatbot-icon {
         width: 70px;
         height: 70px;
-        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5); /* Enhanced shadow for visibility */
-        border: 4px solid rgba(255, 255, 255, 0.3); /* Thicker border for visibility */
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+        border: 4px solid rgba(255, 255, 255, 0.3);
     }
     
     .chatbot-icon i {
@@ -1681,10 +1681,10 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .notification-dot {
-        width: 24px; /* Even larger notification dot */
+        width: 24px;
         height: 24px;
         border: 4px solid white;
-        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4); /* Enhanced shadow for notification */
+        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
     }
     
     /* Improve section spacing on very small screens */
@@ -1759,6 +1759,55 @@ h1, h2, h3, h4, h5, h6 {
     .tech-item:hover {
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     }
+}
+
+/* Fix website layout issues - prevent cards from overlapping */
+.service-card {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card .btn {
+    margin-top: auto;
+    align-self: center;
+}
+
+.service-card.featured {
+    transform: scale(1.02);
+    z-index: 2;
+}
+
+.featured-badge {
+    z-index: 3;
+}
+
+/* Improve text visibility */
+.section-title {
+    text-shadow: none;
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.service-card h3 {
+    font-weight: 700;
+}
+
+.service-features li {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.service-features i {
+    flex-shrink: 0;
+}
+
+/* Better spacing for special service */
+.special-service {
+    margin-top: 2rem;
 }
 
 /* Additional animations */
