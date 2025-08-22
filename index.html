@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neurova AI - Leading AI Development & Digital Solutions</title>
     <meta name="description" content="Netherlands-based AI development company specializing in artificial intelligence, website development, SEO, and social media marketing. Professional solutions for business growth.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="images/neurova-ai-logo.svg">
-    <link rel="icon" type="image/png" href="images/neurova-ai-logo.png">
-    <link rel="apple-touch-icon" href="images/neurova-ai-logo.png">
-    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -307,12 +301,12 @@
                     <div class="chatbot-section">
                         <h4>Try out our new Chat Bot</h4>
                         <div class="chatbot-preview">
-                            <div class="chatbot-message" id="chatbot-message">
+                            <div class="chatbot-message">
                                 <strong>Neurova Bot:</strong> Welcome to Neurova AI! How can we assist you today? We specialize in AI development, website creation, SEO, and consulting services. Feel free to ask us anything about these topics!
                             </div>
                             <div class="chatbot-input">
-                                <input type="text" id="chatbot-input" placeholder="Ask me about our services..." maxlength="200">
-                                <button class="chatbot-btn" id="chatbot-send">
+                                <input type="text" placeholder="Ask me about our services..." readonly>
+                                <button class="chatbot-btn">
                                     <i class="fas fa-paper-plane"></i>
                                 </button>
                             </div>
@@ -420,44 +414,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Floating Chatbot Icon -->
-    <div class="floating-chatbot" id="floating-chatbot">
-        <div class="chatbot-icon">
-            <i class="fas fa-robot"></i>
-            <span class="notification-dot"></span>
-        </div>
-        <div class="chatbot-tooltip">Chat with Neurova Bot</div>
-    </div>
-
-    <!-- Chatbot Modal -->
-    <div class="chatbot-modal" id="chatbot-modal">
-        <div class="chatbot-modal-content">
-            <div class="chatbot-header">
-                <div class="chatbot-title">
-                    <i class="fas fa-robot"></i>
-                    <span>Neurova Bot</span>
-                </div>
-                <button class="chatbot-close" id="chatbot-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chatbot-messages" id="chatbot-messages">
-                <div class="message bot-message">
-                    <div class="message-content">
-                        <strong>Neurova Bot:</strong> Hello! I'm your AI assistant from Neurova AI. How can I help you today? I can answer questions about our services, pricing, or help you get started with a project.
-                    </div>
-                    <div class="message-time">Just now</div>
-                </div>
-            </div>
-            <div class="chatbot-input-area">
-                <input type="text" id="modal-chatbot-input" placeholder="Type your message here..." maxlength="200">
-                <button class="chatbot-send-btn" id="modal-chatbot-send">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>

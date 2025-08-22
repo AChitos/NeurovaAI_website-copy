@@ -9,185 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initParallaxEffects();
     initLoadingAnimations();
     initInteractiveElements();
-    initChatbot(); // New chatbot functionality
 });
-
-
-// Chatbot functionality
-function initChatbot() {
-    const floatingChatbot = document.getElementById('floating-chatbot');
-    const chatbotModal = document.getElementById('chatbot-modal');
-    const chatbotClose = document.getElementById('chatbot-close');
-    const chatbotMessages = document.getElementById('chatbot-messages');
-    const modalInput = document.getElementById('modal-chatbot-input');
-    const modalSendBtn = document.getElementById('modal-chatbot-send');
-    const contactInput = document.getElementById('chatbot-input');
-    const contactSendBtn = document.getElementById('chatbot-send');
-
-    // Open chatbot modal
-    floatingChatbot.addEventListener('click', function() {
-        chatbotModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        modalInput.focus();
-        
-        // Remove notification dot when opened
-        const notificationDot = document.querySelector('.notification-dot');
-        if (notificationDot) {
-            notificationDot.style.display = 'none';
-        }
-    });
-
-    // Close chatbot modal
-    chatbotClose.addEventListener('click', function() {
-        chatbotModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-
-    // Close modal when clicking outside
-    chatbotModal.addEventListener('click', function(e) {
-        if (e.target === chatbotModal) {
-            chatbotModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    // Send message function
-    function sendMessage(message, isUser = true) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-        
-        const now = new Date();
-        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        
-        messageDiv.innerHTML = `
-            <div class="message-content">
-                ${isUser ? message : `<strong>Neurova Bot:</strong> ${message}`}
-            </div>
-            <div class="message-time">${timeString}</div>
-        `;
-        
-        chatbotMessages.appendChild(messageDiv);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        
-        // Add animation
-        messageDiv.style.opacity = '0';
-        messageDiv.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            messageDiv.style.transition = 'all 0.3s ease';
-            messageDiv.style.opacity = '1';
-            messageDiv.style.transform = 'translateY(0)';
-        }, 100);
-    }
-
-    // Handle message sending from modal
-    function handleModalSend() {
-        const message = modalInput.value.trim();
-        if (message) {
-            sendMessage(message, true);
-            modalInput.value = '';
-            
-            // Simulate bot response
-            setTimeout(() => {
-                const botResponse = generateBotResponse(message);
-                sendMessage(botResponse, false);
-            }, 1000);
-        }
-    }
-
-    // Handle message sending from contact form
-    function handleContactSend() {
-        const message = contactInput.value.trim();
-        if (message) {
-            // Update the contact form message
-            const contactMessage = document.getElementById('chatbot-message');
-            contactMessage.innerHTML = `<strong>You:</strong> ${message}`;
-            
-            // Simulate bot response
-            setTimeout(() => {
-                const botResponse = generateBotResponse(message);
-                contactMessage.innerHTML = `<strong>Neurova Bot:</strong> ${botResponse}`;
-            }, 1000);
-            
-            contactInput.value = '';
-        }
-    }
-
-    // Event listeners for sending messages
-    modalSendBtn.addEventListener('click', handleModalSend);
-    contactSendBtn.addEventListener('click', handleContactSend);
-
-    // Enter key support
-    modalInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            handleModalSend();
-        }
-    });
-
-    contactInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            handleContactSend();
-        }
-    });
-
-    // Auto-close notification dot after 5 seconds
-    setTimeout(() => {
-        const notificationDot = document.querySelector('.notification-dot');
-        if (notificationDot) {
-            notificationDot.style.animation = 'none';
-            notificationDot.style.opacity = '0.5';
-        }
-    }, 5000);
-}
-
-// Generate bot responses based on user input
-function generateBotResponse(userMessage) {
-    const message = userMessage.toLowerCase();
-    
-    // Service-related questions
-    if (message.includes('service') || message.includes('what do you do') || message.includes('help')) {
-        return "We offer comprehensive AI development, website creation, SEO optimization, and social media marketing services. Our team specializes in creating custom solutions that drive business growth. What specific service are you interested in?";
-    }
-    
-    if (message.includes('ai') || message.includes('artificial intelligence')) {
-        return "Our AI development services include custom AI systems, machine learning models, natural language processing, and AI integration into existing platforms. We've helped businesses automate processes and gain valuable insights from their data.";
-    }
-    
-    if (message.includes('website') || message.includes('web development')) {
-        return "We create professional websites from basic informational sites to complex e-commerce platforms. Our websites are optimized for speed, SEO, and user experience. We also provide hosting and domain services.";
-    }
-    
-    if (message.includes('seo') || message.includes('search engine')) {
-        return "Our SEO services help improve your website's visibility in search results. We optimize content, technical aspects, and build quality backlinks to increase organic traffic and rankings.";
-    }
-    
-    if (message.includes('price') || message.includes('cost') || message.includes('how much')) {
-        return "Our pricing varies based on project requirements. We offer three main packages: Basic Website, E-commerce, and Custom Website. For accurate pricing, please contact us with your specific needs.";
-    }
-    
-    if (message.includes('contact') || message.includes('get in touch')) {
-        return "You can reach us at +31 619919544 or info@neurovaai.com. We're located at Oostersingel 12, Groningen. Our support hours are Monday-Friday 10:00AM-7:00PM and Saturday-Sunday 4:30PM-10:00PM.";
-    }
-    
-    if (message.includes('medical') || message.includes('healthcare')) {
-        return "We specialize in custom medical software development, covering every need of your expertise. Our medical software solutions include personalized features and 24/7 customer support.";
-    }
-    
-    if (message.includes('time') || message.includes('how long')) {
-        return "Project timelines depend on complexity. Basic websites typically take 2-4 weeks, e-commerce sites 4-8 weeks, and custom projects vary. We'll provide a detailed timeline during consultation.";
-    }
-    
-    if (message.includes('experience') || message.includes('portfolio')) {
-        return "We have extensive experience in AI development and digital strategies, with a proven track record helping businesses enhance their online presence. We've worked with various industries and can provide case studies upon request.";
-    }
-    
-    if (message.includes('support') || message.includes('help desk')) {
-        return "We provide 24/7 customer support to all our clients. You can reach us anytime for fast and accurate responses to your questions and needs.";
-    }
-    
-    // Default response
-    return "Thank you for your question! I'm here to help with information about our AI development, website creation, SEO, and consulting services. Feel free to ask about specific services, pricing, or how we can help your business.";
-}
 
 // Navigation functionality
 function initNavigation() {
@@ -505,6 +327,14 @@ function initInteractiveElements() {
             }
         });
     });
+
+    // Chatbot interaction
+    const chatbotBtn = document.querySelector('.chatbot-btn');
+    if (chatbotBtn) {
+        chatbotBtn.addEventListener('click', function() {
+            showNotification('Chatbot feature coming soon!', 'info');
+        });
+    }
 }
 
 // Notification system
@@ -748,7 +578,5 @@ function createParticle(container) {
 window.NeurovaAI = {
     showNotification,
     initNavigation,
-    initScrollAnimations,
-    initChatbot,
-    generateBotResponse
+    initScrollAnimations
 };
