@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initChatbot(); // New chatbot functionality
 });
 
+
 // Chatbot functionality
 function initChatbot() {
     const floatingChatbot = document.getElementById('floating-chatbot');
