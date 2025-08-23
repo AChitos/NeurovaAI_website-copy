@@ -587,13 +587,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .feature-card h3 {
     font-size: 1.25rem;
-    color: #1f2937;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
     font-weight: 700;
 }
 
 .feature-card p {
-    color: #374151;
+    color: var(--text-light);
     line-height: 1.6;
     font-weight: 500;
 }
