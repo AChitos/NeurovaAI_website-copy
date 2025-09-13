@@ -46,6 +46,7 @@
             "@graph": [
                 {
                     "@type": "Organization",
+                    "@id": "https://neurova-ai.com/#org",
                     "name": "Neurova AI",
                     "url": "https://neurova-ai.com/",
                     "logo": "https://neurova-ai.com/images/neurova-ai-logo.svg",
@@ -59,10 +60,59 @@
                     }
                 },
                 {
+                    "@type": "ProfessionalService",
+                    "@id": "https://neurova-ai.com/#business",
+                    "name": "Neurova AI",
+                    "image": "https://neurova-ai.com/images/neurova-ai-logo.svg",
+                    "url": "https://neurova-ai.com/",
+                    "telephone": "+31 619919544",
+                    "priceRange": "$$",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Oostersingel 12",
+                        "addressLocality": "Groningen",
+                        "addressCountry": "NL"
+                    },
+                    "areaServed": ["Netherlands", "Worldwide"],
+                    "contactPoint": [{
+                        "@type": "ContactPoint",
+                        "telephone": "+31 619919544",
+                        "contactType": "sales",
+                        "availableLanguage": ["en", "nl"],
+                        "email": "info@neurovaai.com"
+                    }],
+                    "serviceType": [
+                        "AI Development",
+                        "Website Development",
+                        "SEO",
+                        "Social Media Marketing",
+                        "Custom Medical Software"
+                    ]
+                },
+                {
                     "@type": "WebSite",
+                    "@id": "https://neurova-ai.com/#website",
                     "name": "Neurova AI",
                     "url": "https://neurova-ai.com/",
-                    "inLanguage": "en"
+                    "inLanguage": "en",
+                    "publisher": { "@id": "https://neurova-ai.com/#org" },
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": "https://neurova-ai.com/?q={search_term_string}",
+                        "query-input": "required name=search_term_string"
+                    }
+                },
+                {
+                    "@type": "FAQPage",
+                    "@id": "https://neurova-ai.com/#faq",
+                    "mainEntity": [
+                        {"@type": "Question", "name": "What services does Neurova AI offer?", "acceptedAnswer": {"@type": "Answer", "text": "We build custom AI solutions, modern websites, SEO campaigns, social media marketing, and bespoke medical software."}},
+                        {"@type": "Question", "name": "Where are you based and who do you serve?", "acceptedAnswer": {"@type": "Answer", "text": "We are based in Groningen, Netherlands, and work with clients locally and worldwide."}},
+                        {"@type": "Question", "name": "How do we start a project?", "acceptedAnswer": {"@type": "Answer", "text": "Contact us via the form or email. We schedule a discovery call, define goals, scope, and timelines, then begin with a clear plan."}},
+                        {"@type": "Question", "name": "Do you offer SEO and performance optimization?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every site includes technical SEO, performance best practices, and ongoing optimization options."}},
+                        {"@type": "Question", "name": "Can you build medical software?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We design and build custom medical software tailored to clinical workflows and compliance needs."}},
+                        {"@type": "Question", "name": "How can I contact you?", "acceptedAnswer": {"@type": "Answer", "text": "Email info@neurovaai.com or call +31 619919544."}}
+                    ]
                 }
             ]
         }
@@ -80,6 +130,7 @@
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#about" class="nav-link">About Us</a>
                 <a href="#contact" class="nav-link">Contact</a>
+                <a href="#faq" class="nav-link">FAQ</a>
             </div>
             <div class="nav-toggle" id="nav-toggle">
                 <span class="bar"></span>
@@ -130,6 +181,41 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="faq" style="padding: 6rem 0; background: var(--bg-primary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Straight answers to help you get started</p>
+            </div>
+            <div class="features-grid" style="gap:1.5rem;">
+                <div class="feature-card" data-aos="fade-up">
+                    <h3>What services do you provide?</h3>
+                    <p>Custom AI development, modern website design and development, SEO, social media marketing, and bespoke medical software.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>How long does a typical project take?</h3>
+                    <p>Websites usually take 2–6 weeks depending on scope. AI projects vary by complexity—after a discovery call we provide a clear timeline.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Do you work internationally?</h3>
+                    <p>Yes. We are based in Groningen, Netherlands and work with clients across Europe and worldwide.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Do you provide SEO and performance optimization?</h3>
+                    <p>Yes. Every site ships with technical SEO best practices, performance tuning, and analytics-ready setup.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>Can you build medical software?</h3>
+                    <p>Yes. We build secure, compliant solutions tailored to medical workflows and data needs.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <h3>How do we start?</h3>
+                    <p>Send an email to <a href="mailto:info@neurovaai.com">info@neurovaai.com</a> or call <a href="tel:+31619919544">+31 619919544</a> to schedule a free discovery call.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
@@ -473,6 +559,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
