@@ -1255,16 +1255,16 @@ h1, h2, h3, h4, h5, h6 {
 
     /* Fix mobile navigation menu visibility */
     .nav-menu {
-        background-color: #1f2937;
+        background-color: #1f2937; /* dark background */
         backdrop-filter: blur(20px);
         border-top: 1px solid var(--border-color);
     }
 
     .nav-menu .nav-link {
-        color: #1f2937;
+        color: #ffffff; /* ensure links are visible on dark background */
         font-weight: 600;
         padding: 1rem 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
         transition: all 0.3s ease;
     }
 
@@ -1280,7 +1280,7 @@ h1, h2, h3, h4, h5, h6 {
 
     /* Fix mobile toggle button visibility */
     .nav-toggle .bar {
-        background: #1f2937;
+        background: #ffffff; /* white bars for contrast */
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
@@ -1396,14 +1396,14 @@ h1, h2, h3, h4, h5, h6 {
 
     /* Ensure mobile navigation is visible on very small screens */
     .nav-menu .nav-link {
-        color: #1f2937;
+        color: #ffffff; /* keep white text on dark bg */
         font-weight: 600;
         font-size: 1.1rem;
         padding: 1.25rem 0;
     }
 
     .nav-toggle .bar {
-        background: #1f2937;
+        background: #ffffff; /* keep visible on dark backgrounds */
         width: 28px;
         height: 3px;
         margin: 4px 0;
