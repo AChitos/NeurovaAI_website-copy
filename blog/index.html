@@ -55,6 +55,10 @@
           <button class="pill" data-tag="analytics">Analytics</button>
           <button class="pill" data-tag="ecommerce">E-commerce</button>
         </div>
+        <div class="active-filter" id="active-filter" hidden>
+          <span id="active-filter-text"></span>
+          <button id="clear-filter" aria-label="Clear filters">✕</button>
+        </div>
       </div>
 
       <div class="services-grid" id="blog-grid">
@@ -154,20 +158,23 @@
   <script src="/analytics.js" defer></script>
   <script src="/script.js" defer></script>
   <script>
-    // Search + pill filters + sort by date + deep-linking (?tag=, ?q=)
+    // Search + pill filters + sort by date + deep-linking (?tag=, ?q=) + clear chip + title update
     (function () {
       const input = document.getElementById('blog-search');
       const pills = document.getElementById('blog-pills');
       const grid = document.getElementById('blog-grid');
+      const chip = document.getElementById('active-filter');
+      const chipText = document.getElementById('active-filter-text');
+      const clearBtn = document.getElementById('clear-filter');
       if (!input || !grid) return;
       const cards = Array.from(grid.querySelectorAll('.blog-card'));
 
       // Sort cards by data-date desc at load
       cards.sort((a,b) => new Date(b.dataset.date||0) - new Date(a.dataset.date||0)).forEach(c => grid.appendChild(c));
 
-      const params = new URLSearchParams(location.search);
-      let activeTag = (params.get('tag') || 'all').toLowerCase();
-      const initialQ = (params.get('q') || '').trim();
+  const params = new URLSearchParams(location.search);
+  let activeTag = (params.get('tag') || 'all').toLowerCase();
+  const initialQ = (params.get('q') || '').trim();
       if (initialQ) input.value = initialQ;
 
       function applyActivePill() {
@@ -184,6 +191,24 @@
         history.replaceState(null, '', url);
       }
 
+      function updateTitle() {
+        const base = 'Insights | Neurova AI';
+        if (activeTag && activeTag !== 'all') {
+          document.title = `Insights — ${activeTag.toUpperCase()} | Neurova AI`;
+        } else {
+          document.title = base;
+        }
+      }
+
+      function updateChip() {
+        const q = input.value.trim();
+        const show = (activeTag && activeTag !== 'all') || q;
+        chip.hidden = !show;
+        if (!show) return;
+        const tagText = activeTag !== 'all' ? activeTag.toUpperCase() : '';
+        chipText.textContent = q && tagText ? `${tagText} + “${q}”` : (q ? `“${q}”` : tagText);
+      }
+
       function filter() {
         const q = input.value.trim().toLowerCase();
         const terms = q.split(/\s+/).filter(Boolean);
@@ -195,6 +220,8 @@
           card.style.display = (tagMatch && textMatch) ? '' : 'none';
         });
         updateUrl();
+        updateTitle();
+        updateChip();
       }
 
       applyActivePill();
@@ -206,6 +233,15 @@
           const btn = e.target.closest('.pill');
           if (!btn) return;
           activeTag = btn.dataset.tag;
+          applyActivePill();
+          filter();
+        });
+      }
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          input.value = '';
+          activeTag = 'all';
           applyActivePill();
           filter();
         });
