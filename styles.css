@@ -228,7 +228,7 @@ h1, h2, h3, h4, h5, h6 {
 .bar {
     width: 25px;
     height: 3px;
-    background: var(--text-primary);
+    background: var(--text-primary); /* default theme color */
     margin: 3px 0;
     transition: 0.3s;
 }
@@ -1423,10 +1423,10 @@ h1, h2, h3, h4, h5, h6 {
         background-color: rgba(99, 102, 241, 0.1);
     }
 
-    /* Fix mobile toggle button visibility */
+    /* Mobile toggle button color aligned with theme */
     .nav-toggle .bar {
-        background: #ffffff; /* white bars for contrast */
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        background: var(--text-primary);
+        box-shadow: none;
     }
 
     .nav-toggle:hover .bar {
