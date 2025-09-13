@@ -228,7 +228,7 @@ h1, h2, h3, h4, h5, h6 {
 .bar {
     width: 25px;
     height: 3px;
-    background: var(--text-primary); /* default theme color */
+    background: var(--primary-color); /* use brand color for visibility */
     margin: 3px 0;
     transition: 0.3s;
 }
@@ -1423,9 +1423,9 @@ h1, h2, h3, h4, h5, h6 {
         background-color: rgba(99, 102, 241, 0.1);
     }
 
-    /* Mobile toggle button color aligned with theme */
+    /* Mobile toggle button color aligned with brand */
     .nav-toggle .bar {
-        background: var(--text-primary);
+        background: var(--primary-color);
         box-shadow: none;
     }
 
@@ -1548,7 +1548,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-toggle .bar {
-        background: var(--text-primary); /* theme color for visibility on white navbar */
+        background: var(--primary-color); /* brand color ensures contrast on white */
         width: 28px;
         height: 3px;
         margin: 4px 0;
