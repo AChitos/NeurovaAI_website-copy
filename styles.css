@@ -24,6 +24,8 @@
     --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
     --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%);
     --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    /* Force light appearance for UA widgets (forms, scrollbars, etc.) */
+    color-scheme: light;
 }
 
 html {
@@ -1560,16 +1562,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-primary: #0f172a;
-        --bg-secondary: #1e293b;
-        --text-primary: #f1f5f9;
-        --text-secondary: #cbd5e1;
-        --border-color: #334155;
-    }
-}
+/* Dark mode is intentionally disabled to keep a consistent light theme */
 
 /* Loading animations */
 .loading {
