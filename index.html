@@ -90,6 +90,43 @@
                     ]
                 },
                 {
+                    "@type": "LocalBusiness",
+                    "@id": "https://neurova-ai.com/#local",
+                    "name": "Neurova AI",
+                    "image": "https://neurova-ai.com/images/neurova-ai-logo.svg",
+                    "url": "https://neurova-ai.com/",
+                    "telephone": "+31 619919544",
+                    "priceRange": "$$",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Oostersingel 12",
+                        "addressLocality": "Groningen",
+                        "addressCountry": "NL"
+                    },
+                    "areaServed": ["Netherlands", "Worldwide"],
+                    "openingHoursSpecification": [
+                        {
+                            "@type": "OpeningHoursSpecification",
+                            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                            "opens": "10:00",
+                            "closes": "19:00"
+                        },
+                        {
+                            "@type": "OpeningHoursSpecification",
+                            "dayOfWeek": ["Saturday","Sunday"],
+                            "opens": "16:30",
+                            "closes": "22:00"
+                        }
+                    ],
+                    "contactPoint": [{
+                        "@type": "ContactPoint",
+                        "telephone": "+31 619919544",
+                        "contactType": "customer support",
+                        "availableLanguage": ["en", "nl"],
+                        "email": "info@neurovaai.com"
+                    }]
+                },
+                {
                     "@type": "WebSite",
                     "@id": "https://neurova-ai.com/#website",
                     "name": "Neurova AI",
@@ -130,6 +167,7 @@
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#about" class="nav-link">About Us</a>
                 <a href="#contact" class="nav-link">Contact</a>
+                <a href="/blog/" class="nav-link">Blog</a>
                 <a href="#faq" class="nav-link">FAQ</a>
             </div>
             <div class="nav-toggle" id="nav-toggle">
@@ -288,7 +326,10 @@
                             <li><i class="fas fa-check"></i> 24/7 customer support</li>
                             <li><i class="fas fa-check"></i> Covering any need for your work</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary">Contact Us</a>
+                        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                            <a href="/services/medical-software.html" class="btn btn-outline">Learn more</a>
+                            <a href="#contact" class="btn btn-primary">Contact Us</a>
+                        </div>
                     </div>
                     <div class="special-service-visual">
                         <i class="fas fa-heartbeat"></i>
@@ -560,6 +601,8 @@
         </div>
     </footer>
 
+    <script>window.NEUROVA_GA4_ID='G-XXXXXXX';</script>
+    <script src="/analytics.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 </html>
