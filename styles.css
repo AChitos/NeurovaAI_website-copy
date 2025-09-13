@@ -1548,7 +1548,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-toggle .bar {
-        background: #ffffff; /* keep visible on dark backgrounds */
+        background: var(--text-primary); /* theme color for visibility on white navbar */
         width: 28px;
         height: 3px;
         margin: 4px 0;
