@@ -55,10 +55,6 @@
           <button class="pill" data-tag="analytics">Analytics</button>
           <button class="pill" data-tag="ecommerce">E-commerce</button>
         </div>
-        <div class="active-filter" id="active-filter" hidden>
-          <span id="active-filter-text"></span>
-          <button id="clear-filter" aria-label="Clear filters">✕</button>
-        </div>
       </div>
 
       <div class="services-grid" id="blog-grid">
@@ -158,14 +154,11 @@
   <script src="/analytics.js" defer></script>
   <script src="/script.js" defer></script>
   <script>
-    // Search + pill filters + sort by date + deep-linking (?tag=, ?q=) + clear chip + title update
+  // Search + pill filters + sort by date + deep-linking (?tag=, ?q=) + title update
     (function () {
       const input = document.getElementById('blog-search');
       const pills = document.getElementById('blog-pills');
       const grid = document.getElementById('blog-grid');
-      const chip = document.getElementById('active-filter');
-      const chipText = document.getElementById('active-filter-text');
-      const clearBtn = document.getElementById('clear-filter');
       if (!input || !grid) return;
       const cards = Array.from(grid.querySelectorAll('.blog-card'));
 
@@ -200,15 +193,6 @@
         }
       }
 
-      function updateChip() {
-        const q = input.value.trim();
-        const show = (activeTag && activeTag !== 'all') || q;
-        chip.hidden = !show;
-        if (!show) return;
-        const tagText = activeTag !== 'all' ? activeTag.toUpperCase() : '';
-        chipText.textContent = q && tagText ? `${tagText} + “${q}”` : (q ? `“${q}”` : tagText);
-      }
-
       function filter() {
         const q = input.value.trim().toLowerCase();
         const terms = q.split(/\s+/).filter(Boolean);
@@ -221,7 +205,6 @@
         });
         updateUrl();
         updateTitle();
-        updateChip();
       }
 
       applyActivePill();
@@ -238,14 +221,6 @@
         });
       }
 
-      if (clearBtn) {
-        clearBtn.addEventListener('click', () => {
-          input.value = '';
-          activeTag = 'all';
-          applyActivePill();
-          filter();
-        });
-      }
     })();
   </script>
 </body>

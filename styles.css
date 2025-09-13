@@ -835,26 +835,6 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 0 0.5rem;
 }
 
-/* Active filter chip */
-.active-filter {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
-    background: #eef2ff;
-    color: #3730a3;
-    border: 1px solid #c7d2fe;
-    padding: 0.35rem 0.6rem;
-    border-radius: 999px;
-    font-weight: 600;
-}
-.active-filter button {
-    background: transparent;
-    border: none;
-    color: #3730a3;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
 
 .blog-card h3 {
     margin: 0 0 0.5rem;
