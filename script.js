@@ -58,10 +58,10 @@ function initNavigation() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.background = '#ffffff';
             navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
         } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.background = '#ffffff';
             navbar.style.boxShadow = 'none';
         }
 

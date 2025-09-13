@@ -148,11 +148,11 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
+    background: #ffffff; /* solid white for maximum contrast */
+    backdrop-filter: blur(0); /* disable blur to prevent translucency on dark mode */
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* limit transitions */
 }
 
 .nav-container {
@@ -198,9 +198,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-primary);
+    color: #1f2937; /* force dark text in navbar */
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
     position: relative;
 }
 
