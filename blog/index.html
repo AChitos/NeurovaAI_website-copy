@@ -38,15 +38,36 @@
       </div>
     </div>
   </nav>
-  <section class="services" style="padding-top:120px;">
+  <section class="blog-section" style="padding-top:120px;">
     <div class="container">
-      <h1 class="section-title">Insights</h1>
-      <p class="section-subtitle">Practical articles on AI, web, and SEO.</p>
-      <ul class="service-features">
-        <li><a href="/blog/ai-development-netherlands.html">AI Development in the Netherlands: How SMEs Can Start Fast</a></li>
-  <li><a href="/blog/website-speed-core-web-vitals-2025.html">Website Speed Optimization: Core Web Vitals Checklist for 2025</a></li>
-  <li><a href="/blog/local-seo-netherlands-checklist-2025.html">Local SEO in the Netherlands: 2025 Checklist for SMEs</a></li>
-      </ul>
+      <div class="section-header">
+        <h1 class="section-title">Insights</h1>
+        <p class="section-subtitle">Practical articles on AI, web, and SEO.</p>
+      </div>
+
+      <div class="blog-search">
+        <input type="search" id="blog-search" placeholder="Search articles (e.g., AI, SEO, performance)" aria-label="Search articles">
+      </div>
+
+      <div class="services-grid" id="blog-grid">
+        <article class="service-card blog-card" data-title="AI Development in the Netherlands: How SMEs Can Start Fast" data-tags="ai, netherlands, sme, getting started, development">
+          <h3><a href="/blog/ai-development-netherlands.html">AI Development in the Netherlands: How SMEs Can Start Fast</a></h3>
+          <p>Where to begin with AI as a small or medium business in the Netherlands: quick wins, realistic budgets, and practical steps.</p>
+          <a href="/blog/ai-development-netherlands.html" class="btn btn-outline">Read more</a>
+        </article>
+
+        <article class="service-card blog-card" data-title="Website Speed Optimization: Core Web Vitals Checklist for 2025" data-tags="performance, core web vitals, lighthouse, speed, web">
+          <h3><a href="/blog/website-speed-core-web-vitals-2025.html">Website Speed Optimization: Core Web Vitals Checklist for 2025</a></h3>
+          <p>Actionable checklist to improve LCP, CLS, and INP. Ship fast experiences and rank higher in search.</p>
+          <a href="/blog/website-speed-core-web-vitals-2025.html" class="btn btn-outline">Read more</a>
+        </article>
+
+        <article class="service-card blog-card" data-title="Local SEO in the Netherlands: 2025 Checklist for SMEs" data-tags="seo, local seo, netherlands, google business profile, maps">
+          <h3><a href="/blog/local-seo-netherlands-checklist-2025.html">Local SEO in the Netherlands: 2025 Checklist for SMEs</a></h3>
+          <p>Improve local visibility: GBP setup, reviews, citations, and on-page basics tailored for Dutch SMEs.</p>
+          <a href="/blog/local-seo-netherlands-checklist-2025.html" class="btn btn-outline">Read more</a>
+        </article>
+      </div>
     </div>
   </section>
   <footer class="footer">
@@ -93,5 +114,23 @@
   <script>window.NEUROVA_GA4_ID='G-1C75RY1TT0';</script>
   <script src="/analytics.js" defer></script>
   <script src="/script.js" defer></script>
+  <script>
+    // Lightweight client-side blog search
+    (function () {
+      const input = document.getElementById('blog-search');
+      if (!input) return;
+      const cards = Array.from(document.querySelectorAll('#blog-grid .blog-card'));
+      function filter() {
+        const q = input.value.trim().toLowerCase();
+        const terms = q.split(/\s+/).filter(Boolean);
+        cards.forEach(card => {
+          const hay = ((card.dataset.title || '') + ' ' + (card.dataset.tags || '') + ' ' + (card.textContent || '')).toLowerCase();
+          const match = terms.every(t => hay.includes(t));
+          card.style.display = match ? '' : 'none';
+        });
+      }
+      input.addEventListener('input', filter);
+    })();
+  </script>
 </body>
 </html>
