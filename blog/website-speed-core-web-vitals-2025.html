@@ -51,7 +51,18 @@
       </div>
       <div class="nav-menu" id="nav-menu">
         <a href="/" class="nav-link">Home</a>
-        <a href="/index.html#services" class="nav-link">Services</a>
+        <div class="nav-link has-dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="services-menu">
+            Services <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div id="services-menu" class="dropdown-menu" role="menu">
+            <a class="dropdown-item" href="/services/ai-development.html" role="menuitem">AI Development</a>
+            <a class="dropdown-item" href="/services/web-development.html" role="menuitem">Website Development</a>
+            <a class="dropdown-item" href="/services/seo.html" role="menuitem">SEO & Marketing</a>
+            <a class="dropdown-item" href="/services/medical-software.html" role="menuitem">Medical Software</a>
+            <a class="dropdown-item" href="/services/ecommerce.html" role="menuitem">E-commerce</a>
+          </div>
+        </div>
         <a href="/index.html#about" class="nav-link">About Us</a>
         <a href="/index.html#contact" class="nav-link">Contact</a>
         <a href="/blog/" class="nav-link">Blog</a>
@@ -139,10 +150,10 @@
         <div class="footer-section">
           <h4>Follow Us</h4>
           <div class="social-links">
-            <a href="https://www.linkedin.com/company/neurovaai/?viewAsMember=true" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/neurovaai/?viewAsMember=true" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>

@@ -179,6 +179,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-logo img:hover {
+
     transform: scale(1.05);
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
 }

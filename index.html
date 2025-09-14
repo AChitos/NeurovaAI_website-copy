@@ -157,6 +157,7 @@
         </script>
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -165,13 +166,24 @@
             </div>
             <div class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
-                <a href="#services" class="nav-link">Services</a>
+                <div class="nav-link has-dropdown">
+                    <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="services-menu">
+                        Services <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div id="services-menu" class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" href="/services/ai-development.html" role="menuitem">AI Development</a>
+                        <a class="dropdown-item" href="/services/web-development.html" role="menuitem">Website Development</a>
+                        <a class="dropdown-item" href="/services/seo.html" role="menuitem">SEO & Marketing</a>
+                        <a class="dropdown-item" href="/services/medical-software.html" role="menuitem">Medical Software</a>
+                        <a class="dropdown-item" href="/services/ecommerce.html" role="menuitem">E-commerce</a>
+                    </div>
+                </div>
                 <a href="#about" class="nav-link">About Us</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <a href="/blog/" class="nav-link">Blog</a>
                 <a href="#faq" class="nav-link">FAQ</a>
             </div>
-            <div class="nav-toggle" id="nav-toggle">
+            <div class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-controls="nav-menu" aria-expanded="false" role="button" tabindex="0">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -194,6 +206,7 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#services" class="btn btn-primary">Explore Services</a>
+                    <a href="/services/ai-development.html" class="btn btn-outline">See AI Development</a>
                     <a href="#contact" class="btn btn-secondary">Get Started</a>
                 </div>
             </div>
@@ -256,6 +269,7 @@
         </div>
     </section>
     <!-- Services Section -->
+    <main id="main">
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
@@ -354,6 +368,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Why Choose Us Section -->
     <section class="why-choose-us">
@@ -603,10 +618,10 @@
                 <div class="footer-section">
                     <h4>Follow Us</h4>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/company/neurovaai/?viewAsMember=true" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/neurovaai/?viewAsMember=true" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
