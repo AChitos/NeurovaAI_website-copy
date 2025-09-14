@@ -264,13 +264,13 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.1;
-
-    /* Blog grid responsive */
-    .blog-section .services-grid {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-    }
     margin-bottom: 1.5rem;
+}
+
+/* Blog grid responsive (moved out of .hero-title to avoid invalid nested CSS) */
+.blog-section .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
 }
 
 .gradient-text {
@@ -1168,10 +1168,10 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Scroll Animations */
+/* Scroll Animations: keep content visible by default (progressive enhancement) */
 [data-aos] {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1; /* visible by default to avoid hidden content if JS fails */
+    transform: none;
     transition: all 0.6s ease;
 }
 
