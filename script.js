@@ -189,29 +189,72 @@ function initFormHandling() {
     }
 
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
+        newsletterForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            const email = this.querySelector('input[type="email"]').value;
-            
+
+            const emailInput = this.querySelector('input[type="email"]');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const honeypot = this.querySelector('input[name="website"]');
+            const originalText = submitBtn.textContent;
+
+            const email = (emailInput?.value || '').trim();
+            const endpoint = window.NEWSLETTER_SHEET_ENDPOINT || '';
+
+            // Basic email validation
+            const isValidEmail = (val) => /[^@\s]+@[^@\s]+\.[^@\s]+/.test(val);
+
             if (!email) {
                 showNotification('Please enter your email address.', 'error');
                 return;
             }
+            if (!isValidEmail(email)) {
+                showNotification('Please enter a valid email address.', 'error');
+                emailInput.focus();
+                return;
+            }
+            if (honeypot && honeypot.value) {
+                // Bot submission; pretend success
+                this.reset();
+                return;
+            }
+            if (!endpoint) {
+                showNotification('Subscription service not configured. Please try again later.', 'error');
+                return;
+            }
 
-            // Simulate subscription
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
+            // Disable UI
             submitBtn.textContent = 'Subscribing...';
             submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                showNotification('Successfully subscribed to our newsletter!', 'success');
-                this.reset();
+            emailInput.disabled = true;
+
+            try {
+                const formData = new FormData();
+                formData.append('email', email);
+
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    mode: 'cors',
+                    body: formData
+                });
+
+                const ok = res.ok;
+                let payload = null;
+                try { payload = await res.json(); } catch (_) {}
+
+                if (ok) {
+                    showNotification(payload?.message || 'Successfully subscribed to our newsletter!', 'success');
+                    this.reset();
+                } else {
+                    const msg = payload?.message || 'Subscription failed. Please try again later.';
+                    showNotification(msg, 'error');
+                }
+            } catch (err) {
+                showNotification('Network error. Please try again.', 'error');
+            } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }, 1500);
+                emailInput.disabled = false;
+            }
         });
     }
 }
