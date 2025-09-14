@@ -9,9 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initParallaxEffects();
     initLoadingAnimations();
     initInteractiveElements();
-    const dropdown = document.querySelector('.has-dropdown');
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdownMenu = document.querySelector('#services-menu');
 });
 
 // Navigation functionality
@@ -55,49 +52,7 @@ function initNavigation() {
         });
     });
 
-    // Services dropdown interactions (desktop + mobile)
-    if (dropdown && dropdownToggle && dropdownMenu) {
-        const closeDropdown = () => {
-            dropdown.classList.remove('open');
-            dropdownToggle.setAttribute('aria-expanded', 'false');
-        };
-        const openDropdown = () => {
-            dropdown.classList.add('open');
-            dropdownToggle.setAttribute('aria-expanded', 'true');
-        };
-
-        // Toggle on click (works on mobile)
-        dropdownToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
-            if (expanded) closeDropdown(); else openDropdown();
-        });
-
-        // Close when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) closeDropdown();
-        });
-
-        // Keyboard accessibility
-        dropdownToggle.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openDropdown();
-                const firstItem = dropdownMenu.querySelector('.dropdown-item');
-                firstItem && firstItem.focus();
-            }
-            if (e.key === 'Escape') {
-                closeDropdown();
-                dropdownToggle.focus();
-            }
-        });
-        dropdownMenu.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeDropdown();
-                dropdownToggle.focus();
-            }
-        });
-    }
+    // Services dropdown removed per request.
     // Navbar scroll effect
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
