@@ -267,10 +267,22 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1.5rem;
 }
 
-/* Blog grid responsive (moved out of .hero-title to avoid invalid nested CSS) */
+/* Blog grid layout */
 .blog-section .services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: repeat(3, 1fr); /* 3 per row on desktop */
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .blog-section .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on tablet */
+    }
+}
+
+@media (max-width: 640px) {
+    .blog-section .services-grid {
+        grid-template-columns: 1fr; /* 1 per row on mobile */
+    }
 }
 
 .gradient-text {
