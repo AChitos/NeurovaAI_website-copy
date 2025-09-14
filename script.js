@@ -155,36 +155,72 @@ function initFloatingElements() {
 
 // Form handling
 function initFormHandling() {
-    const contactForm = document.querySelector('.contact-form .form');
+    const contactForm = document.querySelector('#contact-form');
     const newsletterForm = document.querySelector('.newsletter-form');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Get form data
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            const honeypot = this.querySelector('input[name="website"]');
+            const endpoint = (window.CONTACT_SHEET_ENDPOINT && window.CONTACT_SHEET_ENDPOINT.startsWith('http'))
+                ? window.CONTACT_SHEET_ENDPOINT
+                : window.NEWSLETTER_SHEET_ENDPOINT;
+
+            // Gather and validate
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            if (!data.name || !data.email || !data.message) {
+
+            const isValidEmail = (val) => /[^@\s]+@[^@\s]+\.[^@\s]+/.test(val);
+            if (!data.name || !data.email || !data.message || !data.service) {
                 showNotification('Please fill in all required fields.', 'error');
                 return;
             }
+            if (!isValidEmail(data.email)) {
+                showNotification('Please enter a valid email address.', 'error');
+                return;
+            }
+            if (honeypot && honeypot.value) {
+                // Bot submission; pretend success
+                this.reset();
+                return;
+            }
+            if (!endpoint) {
+                showNotification('Contact service not configured. Please try again later.', 'error');
+                return;
+            }
 
-            // Simulate form submission
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
+            // Disable UI
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
-            
-            setTimeout(() => {
+            this.querySelectorAll('input, textarea, select').forEach(el => el.disabled = true);
+
+            try {
+                // Ensure type=contact for routing on the server
+                if (!formData.get('type')) formData.append('type', 'contact');
+                // Basic attribution
+                formData.append('source', 'website');
+                formData.append('page', location.href);
+
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    // Use no-cors to avoid CORS blocks; Apps Script will still receive the data
+                    mode: 'no-cors',
+                    body: formData
+                });
+
+                // In no-cors, we can't read status. Assume success and show optimistic message.
                 showNotification('Thank you! Your message has been sent successfully.', 'success');
                 this.reset();
+            } catch (err) {
+                showNotification('Network error. Please try again.', 'error');
+            } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }, 2000);
+                this.querySelectorAll('input, textarea, select').forEach(el => el.disabled = false);
+            }
         });
     }
 
@@ -230,24 +266,20 @@ function initFormHandling() {
             try {
                 const formData = new FormData();
                 formData.append('email', email);
+                formData.append('type', 'newsletter');
+                formData.append('source', 'website');
+                formData.append('page', location.href);
 
-                const res = await fetch(endpoint, {
+                await fetch(endpoint, {
                     method: 'POST',
-                    mode: 'cors',
+                    // Use no-cors to avoid CORS preflight; Apps Script receives FormData
+                    mode: 'no-cors',
                     body: formData
                 });
 
-                const ok = res.ok;
-                let payload = null;
-                try { payload = await res.json(); } catch (_) {}
-
-                if (ok) {
-                    showNotification(payload?.message || 'Successfully subscribed to our newsletter!', 'success');
-                    this.reset();
-                } else {
-                    const msg = payload?.message || 'Subscription failed. Please try again later.';
-                    showNotification(msg, 'error');
-                }
+                // Optimistic success (no-cors prevents reading response)
+                showNotification('Successfully subscribed to our newsletter!', 'success');
+                this.reset();
             } catch (err) {
                 showNotification('Network error. Please try again.', 'error');
             } finally {
