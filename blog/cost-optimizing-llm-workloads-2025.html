@@ -56,21 +56,22 @@
     <div class="container">
       <h1 class="section-title">Cost-Optimizing LLM Workloads in 2025</h1>
       <p class="section-subtitle">Reduce spend while maintaining quality.</p>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Routing & caching</h3>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> Route simple tasks to small models</li>
-          <li><i class="fas fa-check"></i> Embedding and response caches with TTL</li>
-          <li><i class="fas fa-check"></i> Static precomputations for frequent prompts</li>
-        </ul>
-      </div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Prompt & context control</h3>
-        <p>Summarize, compress, or prune context windows; cap tokens; and use structured outputs to simplify parsing.</p>
-      </div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Batching & streaming</h3>
-        <p>Batch batchable tasks and stream user responses to improve perceived latency.</p>
+      <div class="article-content">
+        <p>Token costs add up quickly at scale. The good news: most spend comes from a handful of patterns you can engineer away—without hurting quality.</p>
+
+        <h2>Route work to the right model</h2>
+        <p>Use small, fast models for simple tasks and reserve premium models for hard queries. Add confidence thresholds and fallbacks. Measure quality and cost per use case, not just overall.</p>
+
+        <h2>Cache what repeats</h2>
+        <p>Introduce both embedding caches and response caches with sensible TTLs and cache keys. Precompute frequent prompts offline. Log cache hit rates and investigate misses.</p>
+
+        <h2>Control context</h2>
+        <p>Summarize or prune long contexts; cap input and output tokens; and prefer structured outputs (JSON schemas) to reduce retries and parsing overhead. Compress prompts by removing redundant instructions.</p>
+
+        <h2>Batch and stream</h2>
+        <p>Batch batchable tasks on the server to minimize setup costs, and stream tokens to the UI so users feel latency drop even when total time is unchanged.</p>
+
+        <p>Do these four things well, and you’ll typically cut costs 30–60% while keeping quality steady—or even improving it.</p>
       </div>
     </div>
   </section>

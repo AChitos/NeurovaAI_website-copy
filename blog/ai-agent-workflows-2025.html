@@ -56,22 +56,28 @@
     <div class="container">
       <h1 class="section-title">Designing Reliable AI Agent Workflows in 2025</h1>
       <p class="section-subtitle">Make multi-step, tool-using agents consistent and auditable.</p>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Core building blocks</h3>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> Tool adapters with strict input/output schemas</li>
-          <li><i class="fas fa-check"></i> Short-term scratchpad + long-term vector/RAG memory</li>
-          <li><i class="fas fa-check"></i> Deterministic planners with retries and backoff</li>
-          <li><i class="fas fa-check"></i> Event logs for evaluation and incident review</li>
-        </ul>
-      </div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Guardrails & evaluation</h3>
-        <p>Use allowlists/denylists, budget caps, and automatic checks (unit tests over tool outputs, self-consistency, and human-in-the-loop for high-risk steps).</p>
-      </div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>When to use agents</h3>
-        <p>Prefer simple functions for single-step tasks. Use agents for tasks with branching, search, or tool orchestration across systems.</p>
+      <div class="article-content">
+        <p>Agent demos are everywhere, but production systems need reliability, cost control, and audit trails. Here’s a blueprint we use to ship multi‑step, tool‑using agents that teams can trust.</p>
+
+        <h2>Architecture at a glance</h2>
+        <p>An agent system has four layers: the planner, tools, memory, and policies. The planner decides the next action deterministically—think of a state machine guided by model suggestions. Tools are executed through adapters with strict input/output schemas. Memory is split into a short‑term scratchpad and a long‑term store (vector DB or RAG). Policies enforce limits and guardrails.</p>
+
+        <h2>Tools with contracts</h2>
+        <p>Wrap every tool—search, CRM, spreadsheets—with a schema. Validate inputs before execution and outputs after. Fail closed: if the output doesn’t match the schema, the step retries with a reduced scope, then escalates.</p>
+
+        <h2>Planning and retries</h2>
+        <p>Use a deterministic loop: propose → validate → act → observe → summarize. Add exponential backoff and a maximum budget in tokens and tool calls. Log each step with inputs, outputs, and costs; these logs power evaluation and incident review.</p>
+
+        <h2>Memory that helps, not hurts</h2>
+        <p>Keep a scratchpad for the current task and a separate long‑term memory for reusable facts (RAG). Always trace which memories influenced a decision to make reviews straightforward.</p>
+
+        <h2>Guardrails and evaluation</h2>
+        <p>Allowlist domains and tools. Add automatic checks: unit tests over tool outputs, self‑consistency for critical decisions, and human‑in‑the‑loop for high‑risk actions. Maintain a golden set of tasks and compare planner versions by success rate, cost, and latency.</p>
+
+        <h2>When to use agents</h2>
+        <p>Prefer simple functions for single‑step tasks. Choose agents for workflows with branching, search, or orchestration across multiple systems—research, summarize, enrich, and update records, for example.</p>
+
+        <p>With these practices, agents become boring—in the best way. They do the job, stay within budget, and leave an audit trail when things go wrong.</p>
       </div>
     </div>
   </section>

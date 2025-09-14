@@ -56,21 +56,22 @@
     <div class="container">
       <h1 class="section-title">Secure AI Systems: Threats and Mitigations in 2025</h1>
       <p class="section-subtitle">Build with security from day one.</p>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Key threats</h3>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> Prompt injection and indirect prompt injection</li>
-          <li><i class="fas fa-check"></i> Data exfiltration and supply-chain risks</li>
-          <li><i class="fas fa-check"></i> Model misuse and unsafe tool execution</li>
-        </ul>
-      </div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Mitigations</h3>
-        <p>Guardrails, input/output filters, URL/domain allowlists, sandboxing, and tiered permissions for tools and data.</p>
-      </div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Monitoring</h3>
-        <p>Centralized logs, anomaly detection, red-team exercises, and incident response drills.</p>
+      <div class="article-content">
+        <p>AI applications expand the attack surface: models follow instructions, fetch data, and call tools. In 2025, the biggest failures still come from prompt injection, unsafe tool execution, and leaky data flows—not from exotic model hacks.</p>
+
+        <h2>Threats to plan for</h2>
+        <p><strong>Prompt injection</strong> and <strong>indirect prompt injection</strong> attempt to override instructions via user input or external content. <strong>Data exfiltration</strong> happens when the model is coaxed into revealing secrets. <strong>Supply‑chain risks</strong> arise from third‑party models, plugins, and datasets. And <strong>tool misuse</strong> can turn a helpful agent into a dangerous one.</p>
+
+        <h2>Defensive foundations</h2>
+        <p>Layer controls: sanitize inputs, strip or neutralize markup, and validate URLs against allowlists. Constrain tools with least privilege, explicit capability prompts, and sandboxing. Add output filters for secrets, PII, and unsafe actions, and require human approval for high‑impact steps.</p>
+
+        <h2>Secure retrieval and plugins</h2>
+        <p>When fetching external content, render to text with a safe parser and block scripts. For RAG, store only necessary metadata and redact sensitive fields at ingestion. For plugins, pin versions, sign requests, and log every call with arguments and results.</p>
+
+        <h2>Observe, test, and drill</h2>
+        <p>Centralize logs with correlation IDs across prompts, tools, and users. Run red‑team scenarios for injections and jailbreaks. Practice incident response: rotate keys, revoke tokens, invalidate caches, and redeploy policies quickly.</p>
+
+        <p>Security isn’t a one‑time checklist. Treat it as a continuous practice embedded in your delivery process.</p>
       </div>
     </div>
   </section>

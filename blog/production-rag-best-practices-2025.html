@@ -56,21 +56,25 @@
     <div class="container">
       <h1 class="section-title">Production RAG Best Practices in 2025</h1>
       <p class="section-subtitle">Build retrieval-augmented generation that your team can trust.</p>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Indexing & chunking</h3>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> Structured parsers for PDFs, slides, HTML</li>
-          <li><i class="fas fa-check"></i> Semantic chunking + overlap tuned by evals</li>
-          <li><i class="fas fa-check"></i> Freshness & reindexing schedules</li>
-        </ul>
-      </div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Retrieval & generation</h3>
-        <p>Hybrid retrieval (sparse + dense), reranking, query rewriting, and grounded generation with inline citations.</p>
-      </div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Evaluation</h3>
-        <p>Build a golden set; measure answer quality, grounding, latency, and cost. Track drift and data quality.</p>
+      <div class="article-content">
+        <p>RAG works beautifully when your content is clean, retrieval is precise, and answers are grounded. It fails when PDFs are messy, chunks are arbitrary, and nothing is evaluated. Here’s a production‑ready checklist.</p>
+
+        <h2>Ingestion and indexing</h2>
+        <p>Use structured parsers for PDFs, slides, and HTML. Normalize headings, tables, and links. Generate stable IDs so you can track content lineage and update individual chunks without rebuilding the entire index.</p>
+
+        <h2>Chunking that respects meaning</h2>
+        <p>Prefer semantic chunking with small overlaps (for example 200–500 tokens with 10–15% overlap). Tune with evaluation: bigger isn’t always better. Store metadata like source URL, section, and last‑modified.</p>
+
+        <h2>Retrieval and generation</h2>
+        <p>Use hybrid retrieval—sparse (BM25) + dense embeddings—with reranking. Consider query rewriting to capture user intent. During generation, include inline citations and short quotes to show grounding, and cap the number of sources to keep answers crisp.</p>
+
+        <h2>Freshness and governance</h2>
+        <p>Schedule re‑indexing of changed sources and alert on parser failures. Maintain allowlists for trusted domains and redact sensitive fields at ingestion time.</p>
+
+        <h2>Evaluation loop</h2>
+        <p>Build a golden set from real questions. Rate answers for accuracy, grounding, and completeness; track latency and cost. Re‑run after content or embedding model updates to catch regressions. Watch for drift and data quality issues.</p>
+
+        <p>Do these basics well and your RAG system will be fast, cheap, and—most importantly—trustworthy.</p>
       </div>
     </div>
   </section>

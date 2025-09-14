@@ -57,22 +57,36 @@
       <h1 class="section-title">Prompt Engineering for Better Customer Support</h1>
       <p class="section-subtitle">Design prompts that reduce escalations and increase first-contact resolution.</p>
   <div class="blog-meta"><span>May 6, 2025</span><span>•</span><span>5 min read</span></div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Prompt framework</h3>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> Role + objective + constraints</li>
-          <li><i class="fas fa-check"></i> Style and tone guidelines</li>
-          <li><i class="fas fa-check"></i> Examples and counter-examples</li>
-          <li><i class="fas fa-check"></i> Tool instructions (knowledge, search, CRM)</li>
-        </ul>
-      </div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Guardrails</h3>
-        <p>Define refusal policies, sensitive topics, and escalation triggers. Log prompts/responses to improve over time.</p>
-      </div>
-      <div class="service-card" style="margin-top:2rem;">
-        <h3>Measuring success</h3>
-        <p>Track resolution time, containment rate, CSAT, and handoff quality. Iterate weekly.</p>
+      <div class="article-content">
+        <p>Most support leaders don’t need a clever chatbot—they need faster responses, fewer escalations, and clean hand‑offs when automation isn’t enough. Great prompt design is one of the cheapest ways to move those numbers. Below is a practical approach we use to make answers accurate, grounded, and on‑brand.</p>
+
+        <h2>The minimal prompt that scales</h2>
+        <p>Skip the wall of text. A reliable base prompt is short and testable:</p>
+        <pre><code>Role: Helpful support assistant for ACME.
+Objective: Answer using the knowledge base; include citations.
+Constraints: If the docs don’t contain the answer, say you don’t know and propose escalation.
+Style: Friendly, concise, no emojis.
+Tools: kb.search(query), tickets.create(summary).
+Output: One‑sentence answer, then numbered steps if needed.</code></pre>
+        <p>Each line maps to an evaluation dimension. If the model hallucinates, tighten “Constraints,” add a requirement for citations, or improve retrieval. If tone drifts, refine “Style” with examples.</p>
+
+        <h2>Ground with tools and concrete examples</h2>
+        <p>Customers judge usefulness, not cleverness. Provide the model with examples that mirror your top ten intents plus one counter‑example that demonstrates when to escalate. If you use RAG, append citations and prefer short quotes over long passages.</p>
+
+        <h2>Refusals and escalation</h2>
+        <p>Define unsafe domains—billing changes, legal claims, or anything requiring identity verification. When confidence is low, the assistant should summarize the context and open a ticket. That summary saves agents minutes per conversation.</p>
+
+        <h2>How to measure success</h2>
+        <p>Build a tiny golden set: 30 real tickets covering common and tricky cases. Human‑score correctness, helpfulness, and tone; also score whether the bot escalated at the right time. In production, track containment rate, time to first response, recontact rate, and CSAT. Iterate weekly: small prompt changes can move these metrics.</p>
+
+        <h2>Rollout plan</h2>
+        <ol>
+          <li>Collect real conversations for your top intents and redact sensitive data.</li>
+          <li>Draft the minimal prompt. Add concrete examples and one counter‑example per intent.</li>
+          <li>Add citations, refusal rules, and structured escalation summaries.</li>
+          <li>Launch to a small segment, monitor metrics, and improve weekly.</li>
+        </ol>
+        <p>Done right, customers get clear answers faster, and agents receive better context when human help is needed.</p>
       </div>
     </div>
   </section>
