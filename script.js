@@ -198,17 +198,22 @@ function initFormHandling() {
             this.querySelectorAll('input, textarea, select').forEach(el => el.disabled = true);
 
             try {
-                // Ensure type=contact for routing on the server
-                if (!formData.get('type')) formData.append('type', 'contact');
-                // Basic attribution
-                formData.append('source', 'website');
-                formData.append('page', location.href);
+                // Build URL-encoded body so Apps Script reliably fills e.parameter
+                const params = new URLSearchParams();
+                params.append('name', data.name.trim());
+                params.append('email', data.email.trim());
+                params.append('phone', (data.phone || '').trim());
+                params.append('service', data.service.trim());
+                params.append('message', data.message.trim());
+                params.append('type', 'contact');
+                params.append('source', 'website');
+                params.append('page', location.href);
 
-                const res = await fetch(endpoint, {
+                await fetch(endpoint, {
                     method: 'POST',
-                    // Use no-cors to avoid CORS blocks; Apps Script will still receive the data
                     mode: 'no-cors',
-                    body: formData
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+                    body: params.toString()
                 });
 
                 // In no-cors, we can't read status. Assume success and show optimistic message.
@@ -264,17 +269,18 @@ function initFormHandling() {
             emailInput.disabled = true;
 
             try {
-                const formData = new FormData();
-                formData.append('email', email);
-                formData.append('type', 'newsletter');
-                formData.append('source', 'website');
-                formData.append('page', location.href);
+                // URL-encoded body improves parameter parsing in Apps Script
+                const params = new URLSearchParams();
+                params.append('email', email);
+                params.append('type', 'newsletter');
+                params.append('source', 'website');
+                params.append('page', location.href);
 
                 await fetch(endpoint, {
                     method: 'POST',
-                    // Use no-cors to avoid CORS preflight; Apps Script receives FormData
                     mode: 'no-cors',
-                    body: formData
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+                    body: params.toString()
                 });
 
                 // Optimistic success (no-cors prevents reading response)
